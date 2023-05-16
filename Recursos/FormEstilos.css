@@ -1,0 +1,23 @@
+select{
+	width:10%;
+}
+
+.formulario{
+	width: 50%;
+}
+
+.contenedor{
+	display: flex;
+	margin-bottom: 25px;
+}
+
+.contenedor form{
+	margin-right: 25px;
+}
+
+a{
+	border-width:1px;
+	border-style:solid;
+	border-radius:10px;
+	padding: 5px 15px;
+}

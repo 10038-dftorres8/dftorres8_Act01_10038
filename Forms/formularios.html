@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../Recursos/FormEstilos.css" type="text/css"/>
+	<title>Document</title>
+</head>
+<body>
+	<div class="contenedor">
+		<form class="formulario" id="direccionForm">
+			<fieldset>
+				<legend>DIRECCION DE ENVIO</legend>
+
+				<label for="calle_principal">Calle principal</label><br>
+				<input type="text" name="calle_principal"><br><br>
+
+				<label for="transversal">Transversal</label><br>
+				<input type="text" name="transversal"><br><br>
+
+				<label><input type="checkbox" id="entrega_propietario">Entrega al propietario</label><br>
+				<label><input type="checkbox" id="entrega_tercero">Entrega a un tercero</label><br><br>
+
+				<label for="cantones">Cantones: </label>
+				<select name="cantones">
+					<option>Quito</option>
+					<option>Cayambe</option>
+					<option>Mejia</option>
+					<option>Pedro Moncayo</option>
+					<option>Pedro Vicente Maldonado</option>
+					<option>Puerto Quito</option>
+					<option>San Miguel de los Bancos</option>
+					<option>Quito</option>
+				</select><br><br>
+
+				<input type="submit" name="" value="ENVIAR DATOS">
+			</fieldset>
+		</form>
+
+		<form class="formulario" id="informacionConfidencialForm" style="display: none;">
+			<fieldset>
+				<legend>INFORMACIÓN CONFIDENCIAL</legend>
+
+				<label for="codigo_postal">Código Postal: </label>
+				<input type="text" name="codigo_postal"><br><br>
+
+				<label for="referencias">Referencia de la Dirección: </label><br>
+				<textarea name="referencias" rows="5" cols="40"></textarea>
+				<br><br>
+				<input type="submit" name="" value="GUARDAR">
+
+			</fieldset>
+		</form>
+
+	</div>
+	<a href="../index.html" >Regresar</a>
+	<script>
+    // Obtener referencias a los elementos relevantes
+    const entregaTerceroCheckbox = document.getElementById('entrega_tercero');
+    const informacionConfidencialForm = document.getElementById('informacionConfidencialForm');
+
+    entregaTerceroCheckbox.addEventListener('change', function () {
+        // Mostrar u ocultar el formulario de "INFORMACIÓN CONFIDENCIAL" según el estado del checkbox
+        informacionConfidencialForm.style.display = this.checked ? 'block' : 'none';
+    });
+	</script>
+
+	<script>
+    // Obtener referencias a los elementos relevantes
+    const entregaPropietarioCheckbox = document.getElementById('entrega_propietario');
+    const enviarDatosBtn = document.querySelector('#direccionForm input[type="submit"]');
+
+    // Agregar eventos de escucha para el checkbox
+    entregaPropietarioCheckbox.addEventListener('change', function () {
+        // Habilitar o deshabilitar el botón "ENVIAR DATOS" según el estado del checkbox
+        enviarDatosBtn.disabled = !this.checked;
+    });
+	</script>
+
+</body>
+</html>

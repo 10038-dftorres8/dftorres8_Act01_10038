@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Recursos/MisEstilos.css" type="text/css"/>
+  <title>Document</title>
+</head>
+<body>
+  <form name="FormContacto" onsubmit="return validar()">
+    <h2>Contacto</h2>
+
+    <label>Correo Electrónico</label><br>
+    <input type="text" name="email" id="email" placeholder="&#9993; usuario@mail.com" required><br>
+
+    <label>Fecha de Nacimiento</label><br>
+    <input type="date" name="fecha">
+
+    <label>Teléfono</label><br>
+    <input type="text" name="telefono" id="telefono" placeholder="&#9742; Telefono" required>
+
+    <input type="submit" name="enviar" value="Enviar" id="enviar">
+
+  </form>
+
+
+  <script>
+  function validar() {
+    var email = document.getElementById("email").value;
+    var telefono = document.getElementById("telefono").value;
+
+    // Validar correo electrónico
+    var expresionEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!expresionEmail.test(email)) {
+      alert('El correo electrónico ingresado no es válido.');
+      return false;
+    }
+
+    // Validar teléfono
+    var expresionTelefono = /^[0-9]{10}$/;
+    if (!expresionTelefono.test(telefono)) {
+      alert('El número de teléfono ingresado no es válido. Debe tener 10 dígitos y solo contener números.');
+      return false;
+    }
+
+    // Deshabilitar el botón y cambiar el mensaje
+    var boton = document.getElementById("enviar");
+    boton.disabled = true;
+    boton.value = 'Enviando datos...';
+
+    // Retraso de 5 segundos antes de enviar el formulario
+    setTimeout(function() {
+      boton.form.submit();
+    }, 1000);
+
+    // Retornar falso para evitar el envío inmediato del formulario
+    return false;
+  }
+</script>
+
+
+</body>
+</html>
